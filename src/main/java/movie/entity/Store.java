@@ -8,9 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,21 +22,18 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Builder
 @Entity
-@Table(name = "city", schema = "movie")
-public class City extends AuditableEntity {
+@Table(name = "store", schema = "movie")
+public class Store extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "city_id")
+  @Column(name = "store_id")
   private Integer id;
 
-  @Column(name = "city", length = 50, nullable = false)
-  private String city;
-
   @ManyToOne
-  @JoinColumn(name = "country_id")
-  private Country country;
+  @JoinColumn(name = "manager_staff_id")
+  private Staff managerStaff;
 
-  @Builder.Default
-  @OneToMany(mappedBy = "city")
-  private Set<Address> addresses = new HashSet<>();
+  @OneToOne
+  @JoinColumn(name = "address_id")
+  private Address address;
 }

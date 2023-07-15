@@ -7,10 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import java.util.HashSet;
-import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,21 +20,29 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @Builder
 @Entity
-@Table(name = "city", schema = "movie")
-public class City extends AuditableEntity {
+@Table(name = "address", schema = "movie")
+public class Address extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "city_id")
+  @Column(name = "address_id")
   private Integer id;
 
-  @Column(name = "city", length = 50, nullable = false)
-  private String city;
+  @Column(name = "address", length = 50, nullable = false)
+  private String address;
+
+  @Column(name = "address2", length = 50)
+  private String address2;
+
+  @Column(name = "district", length = 20, nullable = false)
+  private String district;
 
   @ManyToOne
-  @JoinColumn(name = "country_id")
-  private Country country;
+  @JoinColumn(name = "city_id")
+  private City city;
 
-  @Builder.Default
-  @OneToMany(mappedBy = "city")
-  private Set<Address> addresses = new HashSet<>();
+  @Column(name = "postal_code", length = 10)
+  private String postalCode;
+
+  @Column(name = "phone", length = 20)
+  private String phone;
 }

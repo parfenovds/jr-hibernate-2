@@ -14,10 +14,6 @@ public abstract class AuditableEntity {
   public AuditableEntity() {
   }
 
-  public AuditableEntity(Instant lastUpdate) {
-    this.lastUpdate = lastUpdate;
-  }
-
   public Instant getLastUpdate() {
     return lastUpdate;
   }
