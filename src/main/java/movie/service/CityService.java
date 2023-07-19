@@ -2,12 +2,8 @@ package movie.service;
 
 import java.util.List;
 import movie.entity.City;
-import movie.entity.Customer;
 import movie.exception.NotFoundException;
 import movie.repository.CityRepository;
-import movie.util.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 public class CityService implements BaseService<Integer, City> {
 

@@ -2,7 +2,6 @@ package movie.repository;
 
 import java.util.Optional;
 import movie.entity.Film;
-import org.hibernate.Session;
 
 public class FilmRepository extends BaseRepositoryImpl<Integer, Film> {
   public FilmRepository() {

@@ -2,7 +2,6 @@ package movie.service;
 
 import java.util.List;
 import movie.entity.Actor;
-import movie.entity.Category;
 import movie.exception.NotFoundException;
 import movie.repository.ActorRepository;
 

@@ -2,11 +2,8 @@ package movie.service;
 
 import java.util.List;
 import movie.entity.Staff;
-import movie.entity.Store;
 import movie.exception.NotFoundException;
 import movie.repository.StaffRepository;
-import movie.util.HibernateUtil;
-import org.hibernate.Session;
 
 public class StaffService implements BaseService<Integer, Staff> {
   private final StaffRepository staffRepository;

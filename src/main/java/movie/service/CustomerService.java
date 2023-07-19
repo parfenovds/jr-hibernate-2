@@ -5,9 +5,6 @@ import movie.entity.Customer;
 import movie.entity.Staff;
 import movie.exception.NotFoundException;
 import movie.repository.CustomerRepository;
-import movie.util.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 public class CustomerService implements BaseService<Integer, Customer> {
 
