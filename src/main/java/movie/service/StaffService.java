@@ -19,10 +19,7 @@ public class StaffService implements BaseService<Integer, Staff> {
 
   @Override
   public Staff findById(Integer id) {
-//    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//    session.getTransaction().begin();
     Staff staff = staffRepository.findById(id).orElseThrow(() -> new NotFoundException(Staff.class, id));
-//    session.getTransaction().commit();
     return staff;
   }
 

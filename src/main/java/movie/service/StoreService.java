@@ -20,10 +20,7 @@ public class StoreService implements BaseService<Integer, Store> {
 
   @Override
   public Store findById(Integer id) {
-//    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//    session.getTransaction().begin();
     Store store = storeRepository.findById(id).orElseThrow(() -> new NotFoundException(Store.class, id));
-//    session.getTransaction().commit();
     return store;
   }
 

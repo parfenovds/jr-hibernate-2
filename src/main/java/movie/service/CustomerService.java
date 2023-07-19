@@ -16,20 +16,13 @@ public class CustomerService implements BaseService<Integer, Customer> {
 
   @Override
   public Customer save(Customer entity) {
-//    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//    Transaction transaction = session.getTransaction();
-//    transaction.begin();
     Customer saved = customerRepository.save(entity);
-//    transaction.commit();
     return saved;
   }
 
   @Override
   public Customer findById(Integer id) {
-//    Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//    session.getTransaction().begin();
     Customer customer = customerRepository.findById(id).orElseThrow(() -> new NotFoundException(Staff.class, id));
-//    session.getTransaction().commit();
     return customer;
   }
 
