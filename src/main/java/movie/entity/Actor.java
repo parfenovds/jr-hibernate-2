@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,20 +20,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString(exclude = "cities")
-@Builder
+@ToString(exclude = "films")
 @Entity
-@Table(name = "country", schema = "movie")
-public class Country extends AuditableEntity {
+@Builder
+@Table(name = "actor", schema = "movie")
+public class Actor extends AuditableEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "country_id")
+  @Column(name = "actor_id")
   private Integer id;
 
-  @Column(name = "country", length = 50, nullable = false)
-  private String country;
+  @Column(name = "first_name", length = 45, nullable = false)
+  private String firstname;
+
+  @Column(name = "last_name", length = 45, nullable = false)
+  private String lastname;
 
   @Builder.Default
-  @OneToMany(mappedBy = "country")
-  private Set<City> cities = new HashSet<>();
+  @ManyToMany(mappedBy = "actors")
+  private Set<Film> films = new HashSet<>();
 }

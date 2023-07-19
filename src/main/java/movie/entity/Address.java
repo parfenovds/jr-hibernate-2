@@ -7,19 +7,24 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.HashSet;
+import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@Builder
+@ToString(exclude = {"staff", "customers", "stores"})
 @Entity
+@Builder
 @Table(name = "address", schema = "movie")
 public class Address extends AuditableEntity {
   @Id
@@ -45,4 +50,16 @@ public class Address extends AuditableEntity {
 
   @Column(name = "phone", length = 20)
   private String phone;
+
+  @Builder.Default
+  @OneToMany(mappedBy = "address")
+  private Set<Staff> staff = new HashSet<>();
+
+  @Builder.Default
+  @OneToMany(mappedBy = "address")
+  private Set<Customer> customers = new HashSet<>();
+
+  @Builder.Default
+  @OneToMany(mappedBy = "address")
+  private Set<Store> stores = new HashSet<>();
 }

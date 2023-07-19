@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -15,25 +16,32 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@ToString(exclude = "cities")
-@Builder
+@ToString(exclude = {"rentals", "payments"})
+@SuperBuilder
 @Entity
-@Table(name = "country", schema = "movie")
-public class Country extends AuditableEntity {
+@Table(name = "customer", schema = "movie")
+public class Customer extends Person {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "country_id")
+  @Column(name = "customer_id")
   private Integer id;
 
-  @Column(name = "country", length = 50, nullable = false)
-  private String country;
+  @CreationTimestamp
+  @Column(name = "create_date", nullable = false)
+  private LocalDateTime creatDate;
 
   @Builder.Default
-  @OneToMany(mappedBy = "country")
-  private Set<City> cities = new HashSet<>();
+  @OneToMany(mappedBy = "customer")
+  private Set<Rental> rentals = new HashSet<>();
+
+  @Builder.Default
+  @OneToMany(mappedBy = "customer")
+  private Set<Payment> payments = new HashSet<>();
 }
