@@ -20,8 +20,7 @@ public class CityService implements BaseService<Integer, City> {
 
   @Override
   public City findById(Integer id) {
-    City city = cityRepository.findById(id).orElseThrow(() -> new NotFoundException(City.class, id));
-    return city;
+    return cityRepository.findById(id).orElseThrow(() -> new NotFoundException(City.class, id));
   }
 
   @Override

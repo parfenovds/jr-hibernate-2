@@ -22,8 +22,6 @@ import org.junit.jupiter.api.Test;
 class FilmServiceTest {
   private final CustomerRepository customerRepository = new CustomerRepository();
   private final CustomerService customerService = new CustomerService(customerRepository);
-  private final CityRepository cityRepository = new CityRepository();
-  private final CityService cityService = new CityService(cityRepository);
   private final StoreRepository storeRepository = new StoreRepository();
   private final StoreService storeService = new StoreService(storeRepository);
   private final FilmRepository filmRepository = new FilmRepository();

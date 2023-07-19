@@ -16,14 +16,12 @@ public class CustomerService implements BaseService<Integer, Customer> {
 
   @Override
   public Customer save(Customer entity) {
-    Customer saved = customerRepository.save(entity);
-    return saved;
+    return customerRepository.save(entity);
   }
 
   @Override
   public Customer findById(Integer id) {
-    Customer customer = customerRepository.findById(id).orElseThrow(() -> new NotFoundException(Staff.class, id));
-    return customer;
+    return customerRepository.findById(id).orElseThrow(() -> new NotFoundException(Staff.class, id));
   }
 
   @Override

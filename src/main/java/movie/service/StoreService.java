@@ -20,8 +20,7 @@ public class StoreService implements BaseService<Integer, Store> {
 
   @Override
   public Store findById(Integer id) {
-    Store store = storeRepository.findById(id).orElseThrow(() -> new NotFoundException(Store.class, id));
-    return store;
+    return storeRepository.findById(id).orElseThrow(() -> new NotFoundException(Store.class, id));
   }
 
   @Override

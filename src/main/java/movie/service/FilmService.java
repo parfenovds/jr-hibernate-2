@@ -127,9 +127,6 @@ public class FilmService implements BaseService<Integer, Film> {
         .filter(r -> r.getRentalDate() != null)
         .findAny();
   }
-  private Boolean checkIfAnyRentalExists(Inventory inventory) {
-    return rentalService.findLastForInventory(inventory).isPresent();
-  }
 
   private Rental createRentalForInventory(Customer customer, Staff staff, Inventory inventory) {
     Rental rental = Rental.builder()

@@ -19,8 +19,7 @@ public class StaffService implements BaseService<Integer, Staff> {
 
   @Override
   public Staff findById(Integer id) {
-    Staff staff = staffRepository.findById(id).orElseThrow(() -> new NotFoundException(Staff.class, id));
-    return staff;
+    return staffRepository.findById(id).orElseThrow(() -> new NotFoundException(Staff.class, id));
   }
 
   @Override
