@@ -1,9 +1,7 @@
 package movie.service;
 
-import jakarta.persistence.criteria.CriteriaBuilder;
 import java.time.Year;
 import movie.entity.Film;
-import movie.entity.Language;
 import movie.entity.Store;
 import movie.repository.ActorRepository;
 import movie.repository.CategoryRepository;
@@ -18,7 +16,7 @@ import movie.repository.StaffRepository;
 import movie.repository.StoreRepository;
 import movie.util.HibernateUtil;
 import org.hibernate.Session;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class FilmServiceTest {
